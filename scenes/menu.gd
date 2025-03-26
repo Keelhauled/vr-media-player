@@ -22,6 +22,7 @@ var volume_icon_muted = preload("res://thirdparty/material-symbols/volume_off_wh
 @onready var progress_slider = $VBoxContainer/ProgressSlider
 @onready var progress_label = $VBoxContainer/HBoxContainer2/ProgressLabel
 @onready var volume_control = $VBoxContainer/HBoxContainer3/VolumeSlider
+@onready var title_label = $VBoxContainer/TitleLabel
 @onready var file_dialog = $FileDialog
 
 # for video progress
@@ -93,6 +94,8 @@ func update_ui():
 		set_muted(video_node.is_muted())
 		if !video_node.is_muted():
 			set_volume(video_node.volume_db)
+		if video_node.current_file:
+			title_label.text = video_node.current_file
 
 func _process(_delta):
 	update_ui()

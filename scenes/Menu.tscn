@@ -61,6 +61,12 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "< NO FILE >"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="LoadButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
