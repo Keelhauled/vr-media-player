@@ -279,5 +279,7 @@ dialog_text = "Are you sure you want to quit?"
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer3/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer4/RecenterButton" to="." method="_on_RecenterButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer4/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="canceled" from="FileDialog" to="." method="_on_file_dialog_canceled"]
+[connection signal="confirmed" from="FileDialog" to="." method="_on_file_dialog_confirmed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="confirmed" from="ExitDialog" to="." method="_on_ExitDialog_confirmed"]

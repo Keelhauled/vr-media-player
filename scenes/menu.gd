@@ -22,6 +22,7 @@ var volume_icon_muted = preload("res://thirdparty/material-symbols/volume_off_wh
 @onready var progress_slider = $VBoxContainer/ProgressSlider
 @onready var progress_label = $VBoxContainer/HBoxContainer2/ProgressLabel
 @onready var volume_control = $VBoxContainer/HBoxContainer3/VolumeSlider
+@onready var file_dialog = $FileDialog
 
 # for video progress
 var _duration = 0
@@ -36,8 +37,9 @@ func set_playstate(p):
 
 func _ready():
 	video_node.playback_state_changed.connect(set_playstate)
-	for btn in $FileDialog.find_children("*", "OptionButton", true, false):
+	for btn in file_dialog.find_children("*", "OptionButton", true, false):
 		btn.fit_to_longest_item = false
+	remove_child(file_dialog)
 
 func update_progress_bar(pos: float, duration: float):
 	_progress = pos
@@ -96,12 +98,13 @@ func _process(_delta):
 	update_ui()
 
 func _on_LoadButton_pressed():
+	add_child(file_dialog)
 	#$FileDialog.current_file = video_node.current_file
 	if video_node.current_file:
-		$FileDialog.current_file = video_node.current_file
-	print($FileDialog.current_file)
+		file_dialog.current_file = video_node.current_file
+	print(file_dialog.current_file)
 	print(video_node.current_file)
-	$FileDialog.popup()
+	file_dialog.popup()
 
 
 func _on_LoopCheckButton_toggled(button_pressed):
@@ -174,3 +177,9 @@ func _on_stereo_pressed():
 
 func _on_volume_icon_pressed():
 		set_muted(!video_node.is_muted())
+
+
+func _on_file_dialog_canceled():
+	remove_child($FileDialog)
+func _on_file_dialog_confirmed():
+	remove_child($FileDialog)
