@@ -183,6 +183,6 @@ func _on_volume_icon_pressed():
 
 
 func _on_file_dialog_canceled():
-	remove_child($FileDialog)
+	remove_child(file_dialog)
 func _on_file_dialog_confirmed():
-	remove_child($FileDialog)
+	remove_child(file_dialog)
